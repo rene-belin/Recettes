@@ -1,11 +1,18 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} {% block title %}New Ingredient{% endblock %} {%
+block body %} 
 
-{% block title %}New Ingredient{% endblock %}
+<h1>Create new Ingredient</h1>
 
-{% block body %}
-    <h1>Create new Ingredient</h1>
+{# ******** Message flash ******** #}
+ {% for message in
+app.flashes('success') %}
+<div class="alert alert-success mt-4">
+  {{ message }}
+</div>
+{% endfor %}
 
-    {{ include('ingredient/_form.html.twig') }}
 
-    <a href="{{ path('app_ingredient_index') }}">back to list</a>
+{{ include("ingredient/_form.html.twig") }}
+
+<a href="{{ path('app_ingredient_index') }}">back to list</a>
 {% endblock %}
